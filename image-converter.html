@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Converter</title>
+</head>
+<body>
+  <!-- Image Converter -->
+  <div style="border: solid 1px black;padding: 1rem;">
+    <h2>Choose an Image and Select Format</h2>
+
+    <!-- File Upload -->
+    <input type="file" id="upload" accept="image/*" name="image-converter">
+
+    <!-- Dropdown for format selection -->
+    <select id="formatSelect">
+      <option value="jpeg">JPEG</option>
+      <option value="png">PNG</option>
+      <option value="gif">GIF</option>
+      <option value="webp">WEBP</option>
+    </select>
+
+    <!-- Button to trigger conversion -->
+    <button onclick="convertImage()">Convert</button>
+  </div>
+
+  <!-- image resizer -->
+  <h2>Resize Your Image</h2>
+
+  <!-- File Upload -->
+  <input type="file" id="upload" accept="image/*" name="image-resizer">
+
+  <br><br>
+
+  <!-- Width and Height Input -->
+  <label for="width">Width (px): </label>
+  <input type="number" id="width" placeholder="Width" required>
+  <br><br>
+  <label for="height">Height (px): </label>
+  <input type="number" id="height" placeholder="Height" required>
+
+  <br><br>
+
+  <!-- Aspect Ratio Option -->
+  <label for="aspectRatio">
+    <input type="checkbox" id="aspectRatio" checked>
+    Keep Aspect Ratio
+  </label>
+
+  <br><br>
+
+  <!-- Button to trigger resizing -->
+  <button onclick="resizeImage()">Resize</button>
+
+  <br><br>
+
+  <!-- Canvas to show the resized image -->
+  <canvas id="canvas"></canvas>
+
+  <br><br>
+
+  <!-- Link to download resized image -->
+  <a id="downloadLink" style="display: none;">Download Resized Image</a>
+  <script src="resizer.js"></script>
+  <script src="converter.js"></script>
+</body>
+</html>
