@@ -4,64 +4,82 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Image Converter</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-  <!-- Image Converter -->
-  <div style="border: solid 1px black;padding: 1rem;">
-    <h2>Choose an Image and Select Format</h2>
 
-    <!-- File Upload -->
-    <input type="file" id="upload" accept="image/*" name="image-converter">
+  <div class="container mt-5">
+    <!-- Image Converter Section -->
+    <div class="card p-4 mb-5">
+      <h2>Choose an Image and Select Format</h2>
+      
+      <!-- File Upload -->
+      <div class="mb-3">
+        <input type="file" id="upload" accept="image/*" name="image-converter" class="form-control">
+      </div>
 
-    <!-- Dropdown for format selection -->
-    <select id="formatSelect">
-      <option value="jpeg">JPEG</option>
-      <option value="png">PNG</option>
-      <option value="gif">GIF</option>
-      <option value="webp">WEBP</option>
-    </select>
+      <!-- Dropdown for format selection -->
+      <div class="mb-3">
+        <label for="formatSelect" class="form-label">Select Format</label>
+        <select id="formatSelect" class="form-select">
+          <option value="jpeg">JPEG</option>
+          <option value="png">PNG</option>
+          <option value="gif">GIF</option>
+          <option value="webp">WEBP</option>
+        </select>
+      </div>
 
-    <!-- Button to trigger conversion -->
-    <button onclick="convertImage()">Convert</button>
+      <!-- Button to trigger conversion -->
+      <button onclick="convertImage()" class="btn btn-primary">Convert</button>
+    </div>
+
+    <!-- Image Resizer Section -->
+    <div class="card p-4">
+      <h2>Resize Your Image</h2>
+
+      <!-- File Upload -->
+      <div class="mb-3">
+        <input type="file" id="upload" accept="image/*" name="image-resizer" class="form-control">
+      </div>
+
+      <!-- Width and Height Input -->
+      <div class="mb-3">
+        <label for="width" class="form-label">Width (px)</label>
+        <input type="number" id="width" class="form-control" placeholder="Width" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="height" class="form-label">Height (px)</label>
+        <input type="number" id="height" class="form-control" placeholder="Height" required>
+      </div>
+
+      <!-- Aspect Ratio Option -->
+      <div class="mb-3 form-check">
+        <input type="checkbox" id="aspectRatio" class="form-check-input" checked>
+        <label for="aspectRatio" class="form-check-label">Keep Aspect Ratio</label>
+      </div>
+
+      <!-- Button to trigger resizing -->
+      <button onclick="resizeImage()" class="btn btn-primary">Resize</button>
+
+      <br><br>
+
+      <!-- Canvas to show the resized image -->
+      <canvas id="canvas" class="mt-3"></canvas>
+
+      <br><br>
+
+      <!-- Link to download resized image -->
+      <a id="downloadLink" style="display: none;" class="btn btn-success">Download Resized Image</a>
+    </div>
   </div>
 
-  <!-- image resizer -->
-  <h2>Resize Your Image</h2>
-
-  <!-- File Upload -->
-  <input type="file" id="upload" accept="image/*" name="image-resizer">
-
-  <br><br>
-
-  <!-- Width and Height Input -->
-  <label for="width">Width (px): </label>
-  <input type="number" id="width" placeholder="Width" required>
-  <br><br>
-  <label for="height">Height (px): </label>
-  <input type="number" id="height" placeholder="Height" required>
-
-  <br><br>
-
-  <!-- Aspect Ratio Option -->
-  <label for="aspectRatio">
-    <input type="checkbox" id="aspectRatio" checked>
-    Keep Aspect Ratio
-  </label>
-
-  <br><br>
-
-  <!-- Button to trigger resizing -->
-  <button onclick="resizeImage()">Resize</button>
-
-  <br><br>
-
-  <!-- Canvas to show the resized image -->
-  <canvas id="canvas"></canvas>
-
-  <br><br>
-
-  <!-- Link to download resized image -->
-  <a id="downloadLink" style="display: none;">Download Resized Image</a>
+  <!-- Bootstrap JS & dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+  
+  <!-- Custom JS -->
   <script src="resizer.js"></script>
   <script src="converter.js"></script>
 </body>
